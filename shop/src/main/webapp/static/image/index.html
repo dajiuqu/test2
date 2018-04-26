@@ -1,0 +1,837 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>百度新闻</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+            a:hover {
+                color: #0094ff;
+                text-decoration: underline;
+            }
+
+        body {
+            font-size: 14px;
+            line-height: 27px;
+            color: #000;
+            background: #fff;
+        }
+
+        div#container {
+            position: relative;
+            min-width: 984px;
+            min-height: 980px;
+        }
+
+        header {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            background: #01204f;
+            display: table;
+            z-index: 999;
+        }
+
+
+            header div.wrapper {
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+        nav {
+            margin: 0 auto;
+            width: 984px;
+        }
+
+            nav ul li {
+                float: left;
+                padding-left: 10px;
+                padding-right: 10px;
+                height: 40px;
+                line-height: 40px;
+                margin-right: 5px;
+                text-align: center;
+                font-size: 14px;
+                font-weight: 800;
+            }              
+                
+                 nav ul li a {
+                    color: #fff;
+                }
+
+                    nav ul li a:hover {
+                        color: #fff;
+                        text-decoration: none;
+                    }
+
+                nav ul li.select, nav ul li:hover {
+                    background: red;
+                }
+
+        .clearfix {
+            clear: both;
+        }
+
+        article {
+            width: 984px;
+            margin: 0 auto;
+            /*margin-top: 80px;*/
+        }
+
+            article div.banner {
+                margin-top: 70px;
+            }
+
+                article div.banner .left {
+                    float: left;
+                    width: 300px;
+                }
+
+                    article div.banner .left ul {
+                        margin-top: 10px;
+                    }
+
+                        article div.banner .left ul li.bigger {
+                            font-size: 20px;
+                            line-height: 30px;
+                            font-weight: 400;
+                            color: #111;
+                        }
+
+                article div.banner .right {
+                    float: right;
+                    width: 684px;
+                    height: 400px;
+                    background: #444;
+                }
+
+                    article div.banner .right .wrapper {
+                        width: 684px;
+                        height: 400px;
+                        overflow: hidden;
+                        position: relative;
+                    }
+
+                        /*article div.banner .right .wrapper .lunbo_imgs {
+                            position: absolute;
+                        }*/
+                        article div.banner .right .wrapper .lunbo_imgs ul {
+                            position: absolute;
+                            width: 3420px;
+                        }
+
+                            article div.banner .right .wrapper .lunbo_imgs ul li {
+                                float: left;
+                            }
+
+                                article div.banner .right .wrapper .lunbo_imgs ul li img {
+                                    width: 684px;
+                                    height: 400px;
+                                }
+
+                        article div.banner .right .wrapper .pre {
+                            position: absolute;
+                            left: 20px;
+                            top: 200px;
+                            z-index: 900;
+                            color: #fff;
+                            font-size: 20px;
+                            height: 40px;
+                            line-height: 40px;
+                            width: 40px;
+                            border-radius: 20px;
+                            background: #948d8d;
+                            text-align: center;
+                        }
+
+                        article div.banner .right .wrapper .next {
+                            position: absolute;
+                            right: 20px;
+                            top: 200px;
+                            z-index: 900;
+                            color: #fff;
+                            font-size: 20px;
+                            height: 40px;
+                            line-height: 40px;
+                            width: 40px;
+                            border-radius: 20px;
+                            background: #948d8d;
+                            text-align: center;
+                        }
+
+                        article div.banner .right .wrapper .link {
+                            position: absolute;
+                            right: 20px;
+                            bottom: 20px;
+                            z-index: 900;
+                            color: #fff;
+                        }
+
+                            article div.banner .right .wrapper .link ul li {
+                                float: left;
+                                width: 16px;                    
+                                height: 16px;
+                                margin-right: 10px;                            
+                               
+                                border-radius: 8px;
+                                background: #948d8d;
+                               
+                            }
+
+            article div.main {
+                margin-top: 30px;
+            }
+
+        div.nav_news {
+            height: 50px;
+            line-height: 50px;
+            font-size: 18px;
+            /*background: #456;*/
+            border-top: 4px solid #808080;
+            border-bottom: 1px solid rgb(222, 226, 230);
+        }
+
+            div.nav_news span.bigger {
+                font-size: 30px;
+                font-weight: 600;
+            }
+
+            div.nav_news span {
+                margin-right: 20px;
+            }
+
+        div.news_left {
+            width: 300px;
+            /*background: #ccc;*/
+            float: left;
+            text-align: left;
+            overflow: hidden;
+        }
+
+            div.news_left ul {
+                margin-top: 20px;
+            }
+
+                div.news_left ul li.tittle {
+                    font-size: 20px;
+                    line-height: 30px;
+                    font-weight: 400;
+                    color: #111;
+                }
+
+        div.news_center {
+            width: 384px;
+            /*background: #a12;*/
+            float: left;
+        }
+
+            div.news_center .wrapper {
+                width: 240px;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+
+            div.news_center div.left img, div.news_center div.right img {
+                width: 112px;
+                height: 84px;
+            }
+
+            div.news_center div.left {
+                float: left;
+                width: 112px;
+            }
+
+            div.news_center div.right {
+                float: right;
+                width: 112px;
+            }
+
+        div.news_right {
+            width: 300px;
+            /*height: 200px;
+            background: #438;*/
+            float: right;
+        }
+
+            div.news_right .wrapper {
+                width: 290px;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+
+            div.news_right .img_left, div.news_right .img_left {
+                width: 136px;
+            }
+
+            div.news_right .img_left {
+                float: left;
+            }
+
+            div.news_right .img_left {
+                float: right;
+            }
+
+            div.news_right img {
+                width: 136px;
+                height: 90px;
+            }
+
+        aside {
+            width: 48px;
+            position: fixed;
+            bottom: 20px;
+            z-index: 999;
+            /*right:100px;*/
+            /*height: 200px;*/
+            /*background: #777;*/
+        }
+
+            aside div.help_1 {
+                height: 48px;
+                margin-bottom: 2px;
+                background: url(image/help.png) 0 0 no-repeat;
+            }
+
+            aside div.help_2 {
+                height: 48px;
+                margin-bottom: 2px;
+                background: url(image/help.png) 0 -50px no-repeat;
+            }
+
+            aside div.help_3 {
+                height: 48px;
+                margin-bottom: 2px;
+                background: url(image/help.png) 0 -100px no-repeat;
+            }
+
+            aside div.help_4 {
+                height: 48px;
+                margin-bottom: 2px;
+                background: url(image/help.png) 0 -150px no-repeat;
+            }
+
+            aside div.help_5 {
+                height: 48px;
+                margin-bottom: 2px;
+                background: url(image/help.png) 0 -200px no-repeat;
+            }
+
+            aside div.help_6 {
+                height: 48px;
+                margin-bottom: 2px;
+                background: url(image/help.png) 0 -250px no-repeat;
+            }
+
+            aside div.help_7 {
+                height: 48px;
+                margin-bottom: 2px;
+                background: url(image/help.png) 0 -300px no-repeat;
+            }
+
+        footer {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 100%;
+            background: #001e50;
+        }
+
+            footer div.footer_context {
+                width: 984px;
+                margin: 0 auto;
+                text-align: center;
+                color: #a3a9b5;
+                font-size: 12px;
+            }
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div class="wrapper">
+                <nav>
+                    <ul>
+                        <li class="select">
+                            <a href="#" title="333">首页</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">百家</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">财经</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">娱乐</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333"> 体育</a>
+
+                        </li>
+                        <li>
+                            <a href="#" title="333">互联网</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">时尚</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">汽车</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">国内</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">国际</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">军事</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">视频</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">传媒</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">个性推荐</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">房产</a>
+                        </li>
+                        <li>
+                            <a href="#" title="333">名站</a>
+                        </li>
+                        <li class="nav_drop" style="position:relative;">
+                            <a href="#" title="333">更多</a>
+                            <ul class="drop" style="position:absolute;top:40px;left:0px;display:none;">
+                                <li>标题</li>
+                                <li>标题</li>
+                                <li>标题</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </nav>
+            </div>
+        </header>
+        <article>
+            <div class="banner">
+                <div class="left">
+                    <h2>热点要闻</h2>
+                    <ul>
+                        <li class="bigger"><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                        <li><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                        <li><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                        <li><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                        <li><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                    </ul>
+                    <ul>
+                        <li class="bigger"><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                        <li><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                        <li><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                        <li><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                        <li><a href="#" title="4444">习近平如何向世界讲中国故事？</a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="wrapper">
+                        <div class="lunbo_imgs">
+                            <ul>
+                                <li><img src="image/lunbo/1.jpg" /></li>
+                                <li><img src="image/lunbo/2.jpg" /></li>
+                                <li><img src="image/lunbo/3.jpg" /></li>
+                                <li><img src="image/lunbo/4.jpg" /></li>
+                                <li><img src="image/lunbo/5.jpg" /></li>
+                                <!--<li class="clearfix"></li>-->
+                            </ul>
+                        </div>
+                        <div class="pre"><</div>
+                        <div class="next">></div>
+                        <div class="link">
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="main">
+                <div class="nav_news">
+                    <span class="bigger"><a href="#" title="xxx">国内</a></span>
+                    <span><a href="#" title="xxx">时政要闻</a></span>
+                    <span><a href="#" title="xxx">台湾</a></span>
+                    <span><a href="#" title="xxx">港澳</a></span>
+                    <span><a href="#" title="xxx">更多</a></span>
+                </div>
+                <div class="news_left">
+                    <ul>
+                        <li class="tittle"><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发老子天下第一发沙发沙发老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                    </ul>
+                    <ul>
+                        <li class="tittle"><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                    </ul>
+                </div>
+                <div class="news_center">
+                    <div class="wrapper">
+                        <div class="head">
+                            <h3>国际图片</h3>
+                        </div>
+                        <div class="picture">
+                            <div class="top">
+                                <div>
+                                    <a href="#" title="link"><img src="image/life1.jpg" alt="pic" /></a>
+                                </div>
+                                <p><a href="#" title="link">它们是世界为之倾倒的外交官</a></p>
+                            </div>
+                            <div class="bottom">
+                                <div class="left">
+                                    <a href="#" title="444">
+                                        <img src="image/life21.jpg" alt="img" />
+                                    </a>
+                                    <a href="#" title="33">最像月球的地方：自带PS效果的土耳其</a>
+                                </div>
+                                <div class="right">
+                                    <a href="#" title="444">
+                                        <img src="image/life22.jpg" alt="img" />
+                                    </a>
+                                    <a href="#" title="33">女子患罕见臭鱼症 体味腥臭遭同事投诉 </a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="news_right">
+                    <div class="wrapper">
+                        <div class="top">
+                            <h3>国内图片</h3>
+                            <div class="img_left">
+                                <div>
+                                    <a href="#" title="44"> <img src="image/life31.jpg" alt="life31" /></a>
+                                </div>
+                                <p><a href="#" title="61">男子玩游戏吐血送医：快扶我起来，快赢了</a></p>
+                            </div>
+                            <div class="img_right">
+                                <div>
+                                    <a href="#" title="44"> <img src="image/life32.jpg" alt="life32" /></a>
+                                </div>
+                                <p><a href="#" title="61">北京市不断推进京津冀区域大气污染联防联控工作</a></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="bottom">
+                            <h3>热门点击</h3>
+                            <ul>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="main">
+                <div class="nav_news">
+                    <span class="bigger"><a href="#" title="xxx">国内</a></span>
+                    <span><a href="#" title="xxx">时政要闻</a></span>
+                    <span><a href="#" title="xxx">台湾</a></span>
+                    <span><a href="#" title="xxx">港澳</a></span>
+                    <span><a href="#" title="xxx">更多</a></span>
+                </div>
+                <div class="news_left">
+                    <ul>
+                        <li class="tittle"><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发老子天下第一发沙发沙发老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                    </ul>
+                    <ul>
+                        <li class="tittle"><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                    </ul>
+                </div>
+                <div class="news_center">
+                    <div class="wrapper">
+                        <div class="head">
+                            <h3>国际图片</h3>
+                        </div>
+                        <div class="picture">
+                            <div class="top">
+                                <div>
+                                    <a href="#" title="link"><img src="image/life1.jpg" alt="pic" /></a>
+                                </div>
+                                <p><a href="#" title="link">它们是世界为之倾倒的外交官</a></p>
+                            </div>
+                            <div class="bottom">
+                                <div class="left">
+                                    <a href="#" title="444">
+                                        <img src="image/life21.jpg" alt="img" />
+                                    </a>
+                                    <a href="#" title="33">最像月球的地方：自带PS效果的土耳其</a>
+                                </div>
+                                <div class="right">
+                                    <a href="#" title="444">
+                                        <img src="image/life22.jpg" alt="img" />
+                                    </a>
+                                    <a href="#" title="33">女子患罕见臭鱼症 体味腥臭遭同事投诉 </a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="news_right">
+                    <div class="wrapper">
+                        <div class="top">
+                            <h3>国内图片</h3>
+                            <div class="img_left">
+                                <div>
+                                    <a href="#" title="44"> <img src="image/life31.jpg" alt="life31" /></a>
+                                </div>
+                                <p><a href="#" title="61">男子玩游戏吐血送医：快扶我起来，快赢了</a></p>
+                            </div>
+                            <div class="img_right">
+                                <div>
+                                    <a href="#" title="44"> <img src="image/life32.jpg" alt="life32" /></a>
+                                </div>
+                                <p><a href="#" title="61">北京市不断推进京津冀区域大气污染联防联控工作</a></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="bottom">
+                            <h3>热门点击</h3>
+                            <ul>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="main">
+                <div class="nav_news">
+                    <span class="bigger"><a href="#" title="xxx">国内</a></span>
+                    <span><a href="#" title="xxx">时政要闻</a></span>
+                    <span><a href="#" title="xxx">台湾</a></span>
+                    <span><a href="#" title="xxx">港澳</a></span>
+                    <span><a href="#" title="xxx">更多</a></span>
+                </div>
+                <div class="news_left">
+                    <ul>
+                        <li class="tittle"><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发老子天下第一发沙发沙发老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                    </ul>
+                    <ul>
+                        <li class="tittle"><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                        <li><a href="#" title="news">老子天下第一发沙发沙发</a></li>
+                    </ul>
+                </div>
+                <div class="news_center">
+                    <div class="wrapper">
+                        <div class="head">
+                            <h3>国际图片</h3>
+                        </div>
+                        <div class="picture">
+                            <div class="top">
+                                <div>
+                                    <a href="#" title="link"><img src="image/life1.jpg" alt="pic" /></a>
+                                </div>
+                                <p><a href="#" title="link">它们是世界为之倾倒的外交官</a></p>
+                            </div>
+                            <div class="bottom">
+                                <div class="left">
+                                    <a href="#" title="444">
+                                        <img src="image/life21.jpg" alt="img" />
+                                    </a>
+                                    <a href="#" title="33">最像月球的地方：自带PS效果的土耳其</a>
+                                </div>
+                                <div class="right">
+                                    <a href="#" title="444">
+                                        <img src="image/life22.jpg" alt="img" />
+                                    </a>
+                                    <a href="#" title="33">女子患罕见臭鱼症 体味腥臭遭同事投诉 </a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="news_right">
+                    <div class="wrapper">
+                        <div class="top">
+                            <h3>国内图片</h3>
+                            <div class="img_left">
+                                <div>
+                                    <a href="#" title="44"> <img src="image/life31.jpg" alt="life31" /></a>
+                                </div>
+                                <p><a href="#" title="61">男子玩游戏吐血送医：快扶我起来，快赢了</a></p>
+                            </div>
+                            <div class="img_right">
+                                <div>
+                                    <a href="#" title="44"> <img src="image/life32.jpg" alt="life32" /></a>
+                                </div>
+                                <p><a href="#" title="61">北京市不断推进京津冀区域大气污染联防联控工作</a></p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="bottom">
+                            <h3>热门点击</h3>
+                            <ul>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                                <li><a href="#" title="30">北京：“一带一路”论坛期间没有放假安排 </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </article>
+        <aside>
+            <div class="help_1"></div>
+            <div class="help_2"></div>
+            <div class="help_3"></div>
+            <div class="help_4"></div>
+            <div class="help_5"></div>
+            <div class="help_6"></div>
+            <div class="help_7"></div>
+        </aside>
+        <footer>
+            <div class="footer_context">
+                <p>责任编辑：胡彦BN098 刘石娟BN068 谢建BN085 李芳雨BN091 储信艳BN087 焦碧碧BN084 禤聪BN095 王鑫BN060 崔超BN071 举报电话：59922822</p>
+                <p>投诉中心 京公网安备11000002000001号 互联网新闻信息服务许可 ©2017Baidu 使用百度前必读 </p>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("aside").css("left", $(".footer_context").offset().left + 984 + "px");
+            $(window).resize(function () {
+                $("aside").css("left", $(".footer_context").offset().left + 984 + "px");
+            });
+            $("div.pre").click(function () {
+                var left = $(".lunbo_imgs ul").position().left + 684;
+                if (left == 684) {
+                    left = -684 * 4;
+                }
+                $(".lunbo_imgs ul").css("left", left + "px");
+            })
+            $("div.next").click(function () {
+                var left = $(".lunbo_imgs ul").position().left - 684;
+                if (left == -684 * 5) {
+                    left = 0;
+                }
+                $(".lunbo_imgs ul").css("left", left + "px");
+            });
+            $("div.link ul li").mouseover(function () {
+                if (timer)
+                {
+                    clearTimeout(timer);
+                }
+                var index = $(this).index();
+                //$(this).css("background-color", "#fff");
+                $(".lunbo_imgs ul").css("left",-684*index + "px");
+            });
+            $("div.link ul li").mouseleave(function ()
+            {               
+                timer = setTimeout(lunbo, 1000);
+            });
+            function lunbo()
+            {
+                if (timer) {
+                    clearTimeout(timer);
+                    var left = $(".lunbo_imgs ul").position().left - 684;
+                    if (left == -684 * 5) {
+                        left = 0;
+                    }
+                    $(".lunbo_imgs ul").css("left", left + "px");
+                    timer = setTimeout(lunbo, 1000);
+                }
+            }
+            var timer = setTimeout(lunbo, 1000);
+        });
+        //alert($(".footer_context").offset().top);
+        //alert($(".footer_context").offset().left);
+    </script>
+</body>
+</html>

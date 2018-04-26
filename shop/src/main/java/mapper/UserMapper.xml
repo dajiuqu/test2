@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wl.model.UserMapper">
+
+	<insert id="insert" parameterType="User">
+
+		insert into
+		user(id,name,password) values(#{id},#{name},#{password})
+	</insert>
+	<delete id="delete" parameterType="String">
+		delete from user where
+		id=#{id}
+	</delete>
+	<update id="update" parameterType="User">
+		update user set
+		name=#{name},
+		password=#{password}
+		where id=#{id}
+	</update>
+	<select id="find" parameterType="String" resultType="User">
+		select *
+		from user where id=#{id}
+
+	</select>
+	<select id="findAll" resultType="User">
+		select * from user
+	</select>
+	<select id="queryUserWithRoleAndResourceByUserId" parameterType="String"
+		resultMap="UserWithDataMap">
+		select a.*,
+		c.id role_id,
+		c.name role_name,
+		c.description
+		role_description,
+		c.enabled role_enabled,
+		e.id resource_id,
+		e.url resource_url,
+		e.description resource_description
+		from user a left outer
+		join
+		userrole b on a.id=b.userId
+		left outer join role
+		c on b.roleId=c.id
+		left outer join roleresource d on c.id=d.roleId
+		left
+		outer join resource
+		e on d.resourceId=e.id
+		where a.id=#{userId}
+
+
+	</select>
+	<resultMap type="User" id="UserWithDataMap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="password" property="password" />
+		<collection property="roles" ofType="Role" column="role_id" columnPrefix="role_">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="description" property="description" />
+		</collection>
+		<collection property="resources" ofType="Resource" column="resource_id" columnPrefix="resource_">
+		<id column="id" property="id" />
+		<result column="url" property="url" />
+		<result column="description" property="description" />
+		</collection>
+
+	</resultMap>
+	
+	<select id="queryUserWithRoleAndResource"
+		resultMap="UserWithDataMap">
+		select a.*,
+		c.id role_id,
+		c.name role_name,
+		c.description
+		role_description,
+		c.enabled role_enabled,
+		e.id resource_id,
+		e.url resource_url,
+		e.description resource_description
+		from user a left outer
+		join
+		userrole b on a.id=b.userId
+		left outer join role
+		c on b.roleId=c.id
+		left outer join roleresource d on c.id=d.roleId
+		left
+		outer join resource
+		e on d.resourceId=e.id
+		where a.name=#{name} and a.password=#{password}
+
+
+	</select>
+
+</mapper>

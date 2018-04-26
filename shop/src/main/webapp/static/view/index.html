@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <button type="button" id="logout">退出</button>
+    </div>
+    <h1>这是首页</h1>
+
+    <script>
+        $(function () {
+
+            $("#logout").click(function () {
+
+                $.ajax({
+                    url: "/shop/api/login/out",
+                    type: "get",
+                    success: function (v) {
+                        if (v.suc) {
+                         //   alert("退出成功");
+                            window.location.href = "/shop/static/view/login.html"
+                        }
+                    }
+
+                });
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wl.model.RoleResourceMapper">
+
+	<insert id="insert" parameterType="RoleResource">
+
+		insert into
+		roleresource(roleId,resourceId) values(#{roleId},#{resourceId})
+	</insert>
+	<delete id="delete" parameterType="RoleResource">
+		delete from roleresource where
+		roleId=#{roleId} and resourceId=#{resourceId}
+	</delete>
+	<delete id="deleteAllByRoleId" parameterType="String">
+		delete from
+		roleresource where roleId=#{roleId}
+	</delete>
+</mapper>

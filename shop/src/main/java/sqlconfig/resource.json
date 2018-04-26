@@ -1,0 +1,53 @@
+[
+	{
+		"id": "95061007-b8f1-9a15-f984-fb1cb8d57acd",
+		"url": "/static/view/index.html",
+		"description": "1",
+		"parentId": null,
+		"enabled": 1,
+		"children": [
+			{
+				"id": "a77f7df0-d930-1271-54e5-17db63c4651f",
+				"url": "12",
+				"description": "12",
+				"parentId": "95061007-b8f1-9a15-f984-fb1cb8d57acd",
+				"enabled": 1,
+				"children": [
+					{
+						"id": "2c7776df-0646-8da9-316d-904b1b1ac88f",
+						"url": "221",
+						"description": "221",
+						"parentId": "a77f7df0-d930-1271-54e5-17db63c4651f",
+						"enabled": 1,
+						"children": null
+					},
+					{
+						"id": "ae832f96-e4ed-6b8d-432c-b5d60c2d74ac",
+						"url": "222",
+						"description": "222",
+						"parentId": "a77f7df0-d930-1271-54e5-17db63c4651f",
+						"enabled": 1,
+						"children": null
+					}
+				]
+			}
+		]
+	},
+	{
+		"id": "1ec0df68-b667-14a3-24bb-c38510e22cbb",
+		"url": "112",
+		"description": "112",
+		"parentId": null,
+		"enabled": 1,
+		"children": [
+			{
+				"id": "dc503ac4-53ea-9a19-ed7a-501680e6d0ba",
+				"url": "1121",
+				"description": "1121",
+				"parentId": "1ec0df68-b667-14a3-24bb-c38510e22cbb",
+				"enabled": 1,
+				"children": null
+			}
+		]
+	}
+]

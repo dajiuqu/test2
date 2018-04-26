@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="sqlconfig/mysqldb.properties">
+		<property name="s1" value="s1" />
+	</properties>
+	<typeAliases>
+		<package name="com.wl.model" />
+	</typeAliases>
+	<environments default="db1">
+		<environment id="db1">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="url" value="${url}" />
+				<property name="driver" value="${driver}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/RoleMapper.xml" />
+		<mapper resource="mapper/ResourceMapper.xml" />
+		<mapper resource="mapper/UserRoleMapper.xml" />
+		<mapper resource="mapper/RoleResourceMapper.xml" />
+		<mapper resource="mapper/InitSqlData.xml" />
+	</mappers>
+</configuration>

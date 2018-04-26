@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+
+	<mvc:annotation-driven />
+	<context:component-scan base-package="com.wl.controller" />
+	<mvc:resources location="/static/js/" mapping="/static/js/**" />
+	<mvc:resources location="/static/css/" mapping="/static/css/**" />
+	<mvc:resources location="/static/image/" mapping="/static/image/**" />
+	<mvc:resources location="/static/view/" mapping="/static/view/**" />
+	<mvc:interceptors>
+		<bean class="com.wl.interceptor.LogInterceptor"></bean>
+		<mvc:interceptor>
+			<mvc:mapping path="/api/**" />
+			<mvc:mapping path="/static/view/**" />
+			<bean class="com.wl.interceptor.AuthInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+</beans>

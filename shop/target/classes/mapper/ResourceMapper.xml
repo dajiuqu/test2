@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wl.model.ResourceMapper">
+
+	<insert id="insert" parameterType="Resource">
+
+		insert into resource(id,url,description,parentId,enabled)
+		values(#{id},#{url},#{description},#{parentId},#{enabled})
+	</insert>
+	<delete id="delete" parameterType="String">
+		delete from resource where id=#{id}
+	</delete>
+	<update id="update" parameterType="Resource">
+		update resource set
+		url=#{url},
+		description=#{description},
+		parentId=#{parentId},
+		enabled=#{enabled},
+		where id=#{id}
+	</update>
+	<select id="find" parameterType="String" resultType="Resource">
+		select * from resource where id=#{id}
+
+	</select>
+	<select id="findAll" resultType="Resource">
+		select * from resource
+	</select>
+</mapper>
